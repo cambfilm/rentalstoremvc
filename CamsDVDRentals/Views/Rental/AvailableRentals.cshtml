@@ -1,0 +1,26 @@
+﻿@model IList<CamsDVDRentals.Models.Rental>
+@{
+    ViewBag.Title = "AvailableRentals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Available Rentals</h2>
+
+<table>
+    <tr>
+        <td>Title</td>
+        <td>Release Date</td>
+        <td>Copies Remaining</td>
+    </tr>
+
+    @foreach (var rental in Model)
+    {
+        <tr>
+            <td>@rental.Title</td>
+            <td>@rental.ReleaseDate</td>
+            <td>@rental.AvailableCopies</td>
+        </tr>
+    }
+
+</table>
+

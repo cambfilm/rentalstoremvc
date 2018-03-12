@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using CamsDVDRentals.Data_Access_Layer;
 
 namespace CamsDVDRentals
 {
@@ -29,7 +30,7 @@ namespace CamsDVDRentals
             string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             // Map Interfaces to Classes
-            //kernel.Bind<interface>().To<class>();
+            kernel.Bind<IRentalDAL>().To<RentalDAL>().WithConstructorArgument("connectionString", connectionString);
 
             return kernel;
         }

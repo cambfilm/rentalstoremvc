@@ -6,14 +6,12 @@ using System.Web.Mvc;
 
 namespace CamsDVDRentals.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeeController : Controller
     {
-        // GET: Home
+        // GET: Employee
         public ActionResult Index()
         {
             return View();
         }
-
-
     }
 }

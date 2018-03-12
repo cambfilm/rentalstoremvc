@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rentals</h2>
+
+<a href="@Url.Action("AvailableRentals", "Rental")">Click Here to View Available Rentals</a>
+<br />
+<a href="@Url.Action("AllRentals", "Rental")">Click Here to View ALL Rentals</a>

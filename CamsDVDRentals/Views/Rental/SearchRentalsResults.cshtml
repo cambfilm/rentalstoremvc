@@ -1,0 +1,26 @@
+﻿@model List<CamsDVDRentals.Models.Rental>
+
+@{
+    ViewBag.Title = "RentalSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rental Search</h2>
+
+<table>
+    <tr>
+        <td>Title</td>
+        <td>Release Date</td>
+        <td>Copies Remaining</td>
+    </tr>
+
+    @foreach (var rental in Model)
+    {
+        <tr>
+            <td><a href="@Url.Action("RentalDetail","Rental", new { rentalId = rental.Id })">@rental.Title</a></td>
+            <td>@rental.ReleaseDate</td>
+            <td>@rental.AvailableCopies</td>
+        </tr>
+    }
+
+</table>
