@@ -9,3 +9,8 @@
 
 <p>released: @Model.ReleaseDate.ToShortDateString()</p>
 
+<form method="post" action="@Url.Action("CheckOutRental", "Rental", new { rentalId = Model.Id })">
+
+    <button>Checkout</button>
+
+</form>

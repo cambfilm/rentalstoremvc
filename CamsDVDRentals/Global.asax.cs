@@ -31,6 +31,7 @@ namespace CamsDVDRentals
 
             // Map Interfaces to Classes
             kernel.Bind<IRentalDAL>().To<RentalDAL>().WithConstructorArgument("connectionString", connectionString);
+            kernel.Bind<IUserDAL>().To<UserDAL>().WithConstructorArgument("connectionString", connectionString);
 
             return kernel;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using CamsDVDRentals.Data_Access_Layer;
@@ -31,6 +32,21 @@ namespace CamsDVDRentals.Controllers
             return View("AllRentals", rentals);
         }
 
+        
+        public ActionResult NewRentals()
+        {
+            IList<Rental> rentals = dal.GetTopFiveNewRentals();
+
+            return PartialView("NewRentals", rentals);
+        }
+
+        public ActionResult TopFiveRentals()
+        {
+            IList<Rental> rentals = dal.GetTopFiveMostRented();
+
+            return PartialView("TopFiveRentals", rentals);
+        }
+
         public ActionResult AvailableRentals()
         {
             IList<Rental> rentals = dal.GetAvailableRentals();
@@ -52,19 +68,47 @@ namespace CamsDVDRentals.Controllers
             return View("RentalDetail", rental);
         }
 
+        [HttpPost]
         public ActionResult CheckOutRental(int rentalId)
         {
             Rental rental = dal.GetRentalById(rentalId);
 
             if (rental.IsAvailable)
             {
-                dal.CheckOutRental(rentalId);
-                return RedirectToAction("Success");
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    dal.CheckOutRental(rentalId);
+                    // Call other dal to update rental table
+
+                    scope.Complete();
+                }
+
+                return RedirectToAction("CheckOutSuccess");
             }
             else
             {
-                return RedirectToAction("Unavailable");
+                return RedirectToAction("RentalUnavailable");
             }
         }
+
+        [HttpPost]
+        public ActionResult ReturnRental(int rentalId)
+        {
+            dal.ReturnRental(rentalId);
+
+            return RedirectToAction("ReturnSuccess");
+        }
+
+        public ActionResult CheckOutSuccess()
+        {
+            return View("CheckOutSuccess");
+        }
+
+        public ActionResult RentalUnavailable()
+        {
+            return View("RentalUnavailable");
+        }
+
+
     }
 }

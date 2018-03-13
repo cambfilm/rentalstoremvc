@@ -1,0 +1,19 @@
+﻿@model CamsDVDRentals.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register</h2>
+
+<form method="post" action="@Url.Action("Registration","User")">
+    Email: @Html.TextBoxFor(m => m.Email)
+    Password: @Html.PasswordFor(m => m.Password)
+    Confirm Password: @Html.PasswordFor(m => m.ConfirmPassword)
+
+    Are you an employee? @Html.CheckBoxFor(m => m.IsEmployee)
+
+    <button>Submit</button>
+
+</form>

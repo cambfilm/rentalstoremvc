@@ -1,12 +1,14 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: aquamarine;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color: aquamarine;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -16,3 +18,37 @@ textarea {
     max-width: 280px;
 }
 
+html {
+    background-color: aquamarine;
+}
+
+a {
+    color: darkslategray;
+}
+
+/* home page */
+
+h3 {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: #e34bf5;
+}
+
+div.new-rentals, .top-five {
+    padding: 10px;
+    background-color: #e34bf5;
+    border: 5px outset white;
+}
+
+div.new-rentals a, .top-five a {
+    color: white;
+}
+
+h2#title {
+    display: inline-block;
+    border: 5px inset white;
+    background-color: #e34bf5;
+    padding: 5px;
+    color: white;
+    font-weight: bolder;
+}

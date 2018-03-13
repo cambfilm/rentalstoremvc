@@ -1,0 +1,15 @@
+﻿@model List<CamsDVDRentals.Models.Rental>
+
+@{
+    ViewBag.Title = "RentalsCheckedOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rentals CheckedOut</h2>
+
+<div class="container">
+    @foreach (var rental in Model)
+    {
+        <p>@rental.Title</p>
+    }
+</div>

@@ -1,0 +1,11 @@
+﻿@model IList<CamsDVDRentals.Models.Rental>
+
+<div class="new-rentals">
+
+
+    @foreach (var rental in Model)
+    {
+        <a href="@Url.Action("RentalDetail","Rental", new { rentalId = rental.Id })">@rental.Title</a><p style="color:darkred">@rental.Availabilty</p>
+
+    }
+</div>

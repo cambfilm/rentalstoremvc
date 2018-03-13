@@ -13,5 +13,9 @@ namespace CamsDVDRentals.Data_Access_Layer
         IList<Rental> GetAllRentals();
         Rental GetRentalById(int rentalId);
         bool CheckOutRental(int rentalId);
+        bool ReturnRental(int rentalId);
+        IList<Rental> GetTopFiveNewRentals();
+        IList<Rental> GetTopFiveMostRented();
+        bool CreateNewRental(int rentalId, int userId);
     }
 }
