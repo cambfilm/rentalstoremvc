@@ -1,0 +1,27 @@
+﻿@model CamsDVDRentals.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<form method="post" action="@Url.Action("Login", "User")">
+
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "enter email" })
+
+
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "enter password" })
+
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+
+    <button>Login</button>
+
+</form>
+

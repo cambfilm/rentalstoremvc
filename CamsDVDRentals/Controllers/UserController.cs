@@ -55,24 +55,42 @@ namespace CamsDVDRentals.Controllers
             return View();
         }
 
-        public ActionResult RentalsCheckedOut(UserModel model)
+        public ActionResult RentalsCheckedOut(UserModel user)
         {
-            return View("RentalsCheckedOut", model.RentalsCheckedOut);
+            List<Rental> rentals = dal.GetRentalsCheckedOut(user.Id);
+
+            return View("RentalsCheckedOut", user.RentalsCheckedOut);
         }
 
 
-        
-
-        public ActionResult Login(UserModel model)
+        public ActionResult Login()
         {
-            if (!model.IsEmployee)
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel login)
+        {
+            int userId = dal.CheckLoginCredentials(login);
+
+            if (userId > -1)
             {
-                return View("UserPage", model);
+                bool isEmployee = dal.CheckIfEmployeeByUserId(userId);
+
+                if (!isEmployee)
+                {
+                    return RedirectToAction("UserPage", userId);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Employee", userId);
+                }
             }
             else
             {
-                return View("Index", "Employee", model);
+                return View("Login", login);
             }
+
             
         }
     }

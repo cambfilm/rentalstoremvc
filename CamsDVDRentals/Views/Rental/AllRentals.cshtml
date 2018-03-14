@@ -6,7 +6,7 @@
 }
 
 <h2>All Rentals</h2>
-
+<div class="container">
 <table>
     <tr>
         <td>Title</td>
@@ -18,8 +18,9 @@
     {
         <tr>
             <td>@rental.Title</td>
-            <td>@rental.ReleaseDate</td>
+            <td>@rental.ReleaseDate.ToShortDateString()</td>
             <td>@rental.AvailableCopies</td>
         </tr>
     }
 </table>
+</div>

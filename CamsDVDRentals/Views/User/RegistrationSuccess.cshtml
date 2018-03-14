@@ -1,4 +1,5 @@
-﻿
+﻿@model CamsDVDRentals.Models.UserModel
+
 @{
     ViewBag.Title = "RegistrationSuccess";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,4 @@
 
 <h2>Registration Success!</h2>
 
+<a href="@Url.Action("RentalsCheckedOut", "User", new { user = Model })"><h3>View the movies you currently have checked out</h3></a>

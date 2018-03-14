@@ -10,9 +10,9 @@
 <form method="post" action="@Url.Action("Registration","User")">
     Email: @Html.TextBoxFor(m => m.Email)
     Password: @Html.PasswordFor(m => m.Password)
-    Confirm Password: @Html.PasswordFor(m => m.ConfirmPassword)
 
     Are you an employee? @Html.CheckBoxFor(m => m.IsEmployee)
+    Are you lying? <input type="checkbox" />
 
     <button>Submit</button>
 

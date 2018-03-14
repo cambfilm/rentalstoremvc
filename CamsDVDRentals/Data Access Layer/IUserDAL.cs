@@ -9,5 +9,8 @@ namespace CamsDVDRentals.Data_Access_Layer
     public interface IUserDAL
     {
         bool RegisterUser(RegistrationModel model);
+        int CheckLoginCredentials(LoginModel login);
+        bool CheckIfEmployeeByUserId(int userId);
+        List<Rental> GetRentalsCheckedOut(int userId);
     }
 }
